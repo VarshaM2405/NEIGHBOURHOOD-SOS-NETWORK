@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "sos-network-collection",
+		"name": "SOS Network API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Verify User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{FIREBASE_ID_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/auth/verify",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get Me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{FIREBASE_ID_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/users/me",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Location",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{FIREBASE_ID_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/users/location?lat=12.9716&lng=77.5946",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"location"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "12.9716"
+								},
+								{
+									"key": "lng",
+									"value": "77.5946"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update FCM Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{FIREBASE_ID_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/users/fcm-token?fcm_token=sample_token",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"fcm-token"
+							],
+							"query": [
+								{
+									"key": "fcm_token",
+									"value": "sample_token"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Alerts",
+			"item": [
+				{
+					"name": "Create Alert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{FIREBASE_ID_TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"category\": \"Medical\",\n    \"description\": \"Need oxygen cylinder immediately.\",\n    \"lat\": 12.9716,\n    \"lng\": 77.5946\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/alerts",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"alerts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Nearby Alerts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{FIREBASE_ID_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/alerts/nearby?lat=12.9716&lng=77.5946&radius=1000",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"alerts",
+								"nearby"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "12.9716"
+								},
+								{
+									"key": "lng",
+									"value": "77.5946"
+								},
+								{
+									"key": "radius",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Alert by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{FIREBASE_ID_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/alerts/{{ALERT_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"alerts",
+								"{{ALERT_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Respond to Alert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{FIREBASE_ID_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/alerts/{{ALERT_ID}}/respond",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"alerts",
+								"{{ALERT_ID}}",
+								"respond"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resolve Alert",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{FIREBASE_ID_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/alerts/{{ALERT_ID}}/resolve",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"alerts",
+								"{{ALERT_ID}}",
+								"resolve"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:8000"
+		},
+		{
+			"key": "FIREBASE_ID_TOKEN",
+			"value": "YOUR_TOKEN_HERE"
+		},
+		{
+			"key": "ALERT_ID",
+			"value": "YOUR_ALERT_ID_HERE"
+		}
+	]
+}

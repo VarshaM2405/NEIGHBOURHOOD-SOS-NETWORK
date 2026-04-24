@@ -1,0 +1,28 @@
+# Secrets
+.env
+*.env
+.env.*
+*.enc
+serviceAccountKey.json
+
+# Environment
+venv/
+.venv/
+env/
+
+# Dependencies
+node_modules/
+dist/
+build/
+
+# Mobile
+.expo/
+*.jks
+*.p12
+*.key
+
+# System/Cache
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
